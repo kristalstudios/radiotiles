@@ -1,0 +1,61 @@
+:root {
+  --bg: #fbf8fd;
+  --surface: #ffffff;
+  --text: #1d1724;
+  --muted: #625a6c;
+  --line: #e7e0ee;
+  --accent: #8a3fd1;
+  --grad: linear-gradient(135deg, #7a2fd0 0%, #d8418c 55%, #f5a05a 100%);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141019;
+    --surface: #1e1826;
+    --text: #f3eef8;
+    --muted: #a9a0b4;
+    --line: #2f2739;
+    --accent: #c79bff;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent); }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+header.top { padding: 22px 0; }
+header.top a.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--text); text-decoration: none; font-weight: 700; font-size: 18px;
+}
+header.top img { width: 32px; height: 32px; border-radius: 8px; }
+.hero { text-align: center; padding: 40px 0 28px; }
+.hero img { width: 128px; height: 128px; border-radius: 29px; box-shadow: 0 18px 40px rgba(122, 47, 208, .28); }
+.hero h1 { font-size: 44px; line-height: 1.1; margin: 26px 0 10px; letter-spacing: -0.02em; }
+.hero p.lead { font-size: 20px; color: var(--muted); margin: 0 auto; max-width: 520px; }
+.badge {
+  display: inline-block; margin-top: 26px; padding: 12px 22px; border-radius: 999px;
+  background: var(--grad); color: #fff; font-weight: 600; text-decoration: none;
+}
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 36px 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; }
+.card h3 { margin: 0 0 4px; font-size: 17px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+article { padding: 8px 0 40px; }
+article h1 { font-size: 36px; line-height: 1.15; margin: 12px 0 6px; letter-spacing: -0.01em; }
+article .date { color: var(--muted); margin: 0 0 26px; }
+article h2 { font-size: 21px; margin: 32px 0 8px; }
+article ul { padding-left: 22px; }
+article li { margin: 4px 0; }
+.summary { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px; }
+footer { border-top: 1px solid var(--line); padding: 22px 0 40px; color: var(--muted); font-size: 14px; }
+footer a { color: var(--muted); margin-right: 16px; }
+@media (max-width: 480px) {
+  .hero h1 { font-size: 36px; }
+  .hero p.lead { font-size: 18px; }
+  article h1 { font-size: 30px; }
+}
