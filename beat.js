@@ -20,8 +20,10 @@
   var TRACK_BPM = me && +me.getAttribute("data-bpm") || 0, TRACK_OFFSET = me && +me.getAttribute("data-offset") || 0;
   var audio = null, trackNode = null, beatClock = null, lastBeat = -1;
   var playing = false, step = 0, loop = 0, nextTime = 0;
-  var stage = document.getElementById("beat-stage");
-  var bars = stage ? stage.querySelectorAll(".bars rect") : [];
+  // Every beating heart on the page (the one in "Try it" and the one at the bottom).
+  var stages = Array.prototype.slice.call(document.querySelectorAll(".beat-stage"));
+  var stage = stages[0] || null;
+  var bars = document.querySelectorAll(".beat-stage .bars rect");
   var floatPill = document.getElementById("np-float");
   var freq = null;
 
@@ -132,15 +134,17 @@
 
   // Visuals: heart bumps and a ripple leaves it on every kick.
   function pulseAt(t) {
-    if (!stage) return;
+    if (!stages.length) return;
     var wait = Math.max(0, (t - ctx.currentTime) * 1000);
     setTimeout(function () {
       if (!playing) return;
-      stage.classList.remove("kick"); void stage.offsetWidth; stage.classList.add("kick");
-      var ring = document.createElement("span");
-      ring.className = "ring live";
-      stage.appendChild(ring);
-      setTimeout(function () { ring.remove(); }, 1300);
+      stages.forEach(function (st) {
+        st.classList.remove("kick"); void st.offsetWidth; st.classList.add("kick");
+        var ring = document.createElement("span");
+        ring.className = "ring live";
+        st.appendChild(ring);
+        setTimeout(function () { ring.remove(); }, 1300);
+      });
     }, wait);
   }
 
@@ -209,7 +213,7 @@
     master.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
     setTimeout(function () { if (!playing) { if (audio) audio.pause(); ctx.suspend(); } }, 450);
     Array.prototype.forEach.call(bars, function (r) { r.style.transform = ""; });
-    if (stage) stage.classList.remove("kick");
+    stages.forEach(function (st) { st.classList.remove("kick"); });
     setUI(false);
   }
 
@@ -217,15 +221,15 @@
     b.addEventListener("click", function () { playing ? stop() : start(); });
   });
   // Tapping the heart works too.
-  if (stage) {
-    stage.setAttribute("role", "button");
-    stage.setAttribute("tabindex", "0");
-    stage.setAttribute("aria-label", "Play or pause the Radio Tiles theme");
-    stage.addEventListener("click", function () { playing ? stop() : start(); });
-    stage.addEventListener("keydown", function (e) {
+  stages.forEach(function (st) {
+    st.setAttribute("role", "button");
+    st.setAttribute("tabindex", "0");
+    st.setAttribute("aria-label", "Play or pause the music");
+    st.addEventListener("click", function () { playing ? stop() : start(); });
+    st.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playing ? stop() : start(); }
     });
-  }
+  });
   window.RadioTilesMusic = { start: start, stop: stop, isPlaying: function () { return playing; } };
 
   // Pause when the tab goes to the background.

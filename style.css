@@ -547,3 +547,29 @@ article a { color: #ff9cc8; }
 @media (max-width: 560px) { .try-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } .tile.try { font-size: 15px; } }
 .music-on .tune-toast { bottom: 90px; }
 @media (max-width: 1000px) { .tile.try { font-size: clamp(16px, 3.4vw, 22px); } }
+
+/* ---------- Try it: tiles on the left, the beating heart on the right ---------- */
+.try-layout { display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); gap: 56px; align-items: center; max-width: 1040px; margin: 0 auto; }
+.try-layout .try-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; margin: 0; }
+.try-layout .tile.try { font-size: clamp(16px, 1.8vw, 22px); }
+.try-heart { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.try-stage { width: min(100%, 340px); height: auto; aspect-ratio: 1; margin: 0; }
+.try-now { margin: 0; text-align: center; color: var(--muted); font-size: 17px; min-height: 52px; }
+.try-now b { color: var(--text); }
+.try-now small { display: block; color: var(--soft); font-size: 14px; margin-top: 2px; }
+/* "Vibration": on every beat the heart jumps and shivers a little. */
+.beat-stage.kick .heart { animation: kick-shake .42s ease-out; }
+@keyframes kick-shake {
+  0% { transform: scale(1.13) rotate(-2.5deg); }
+  18% { transform: scale(1.08) rotate(2deg) translateX(1.5px); }
+  36% { transform: scale(1.04) rotate(-1.5deg) translateX(-1px); }
+  56% { transform: scale(1.01) rotate(1deg); }
+  100% { transform: scale(.97) rotate(0); }
+}
+@media (max-width: 900px) {
+  .try-layout { grid-template-columns: 1fr; gap: 26px; }
+  .try-heart { order: -1; }
+  .try-stage { width: 200px; }
+  .try-now { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .beat-stage.kick .heart { animation: none; } }

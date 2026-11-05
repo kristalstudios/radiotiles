@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
   <header class="nav">
@@ -82,16 +82,35 @@
           <h2>Try it. <span class="grad-text">Tap a station.</span></h2>
           <p>Every tile is a station. Tap one to tune in, tap it again to stop. Sound on.</p>
         </div>
-        <div class="try-grid" role="group" aria-label="Demo stations">
-          <button class="tile try" type="button" style="--h:3" aria-pressed="false"><span class="try-name">Lo-Fi Study</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-          <button class="tile try" type="button" style="--h:194" aria-pressed="false"><span class="try-name">Jazz Lounge</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-          <button class="tile try" type="button" style="--h:304" aria-pressed="false"><span class="try-name">Morning Jazz</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-          <button class="tile try" type="button" style="--h:134" aria-pressed="false"><span class="try-name">Country Roads</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-          <button class="tile try" type="button" style="--h:224" aria-pressed="false"><span class="try-name">Groove Lab</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-          <button class="tile try" type="button" style="--h:257" aria-pressed="false"><span class="try-name">Arena Rock</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-          <button class="tile try" type="button" style="--h:335" aria-pressed="false"><span class="try-name">Dance Nation</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-          <button class="tile try" type="button" style="--h:170" aria-pressed="false"><span class="try-name">Pop Hits</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-          <button class="tile try" type="button" style="--h:37" aria-pressed="false"><span class="try-name">Vintage Vinyl</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+        <div class="try-layout">
+          <div class="try-grid" role="group" aria-label="Demo stations">
+            <button class="tile try" type="button" style="--h:3" aria-pressed="false"><span class="try-name">Lo-Fi Study</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" type="button" style="--h:194" aria-pressed="false"><span class="try-name">Jazz Lounge</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" type="button" style="--h:304" aria-pressed="false"><span class="try-name">Morning Jazz</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" type="button" style="--h:134" aria-pressed="false"><span class="try-name">Country Roads</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" type="button" style="--h:224" aria-pressed="false"><span class="try-name">Groove Lab</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" type="button" style="--h:257" aria-pressed="false"><span class="try-name">Arena Rock</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" type="button" style="--h:335" aria-pressed="false"><span class="try-name">Dance Nation</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" type="button" style="--h:170" aria-pressed="false"><span class="try-name">Pop Hits</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" type="button" style="--h:37" aria-pressed="false"><span class="try-name">Vintage Vinyl</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+          </div>
+          <div class="try-heart">
+            <div class="beat-stage try-stage">
+              <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+              <svg class="heart" viewBox="0 0 100 100" aria-hidden="true">
+                <g class="q q1"><use href="#heart-shape" clip-path="url(#q1)" fill="url(#g1)"/></g>
+                <g class="q q2"><use href="#heart-shape" clip-path="url(#q2)" fill="url(#g2)"/></g>
+                <g class="q q3"><use href="#heart-shape" clip-path="url(#q3)" fill="url(#g3)"/></g>
+                <g class="q q4"><use href="#heart-shape" clip-path="url(#q4)" fill="url(#g4)"/></g>
+                <g class="bars" fill="#fff">
+                  <rect x="35.5" y="41" width="3" height="18" rx="1.5"/><rect x="40.5" y="36" width="3" height="28" rx="1.5"/>
+                  <rect x="45.5" y="30" width="3" height="40" rx="1.5"/><rect x="50.5" y="38" width="3" height="24" rx="1.5"/>
+                  <rect x="55.5" y="33" width="3" height="34" rx="1.5"/><rect x="60.5" y="40" width="3" height="20" rx="1.5"/>
+                </g>
+              </svg>
+            </div>
+            <p class="try-now" id="try-now" aria-live="polite">Tap a tile to tune in</p>
+          </div>
         </div>
       </div>
     </section>
@@ -470,8 +489,11 @@
         var music = window.RadioTilesMusic;
         if (tuned === name && music && music.isPlaying()) { music.stop(); return; }
         light(name);
-        if (el && el.closest(".tile-floor")) el.classList.add("lit");
-        showToast(name, hue);
+        // The "Try it" heart shows the song itself; the floor in the hero has no heart nearby, so it gets the card.
+        if (el && el.closest(".tile-floor")) { el.classList.add("lit"); showToast(name, hue); }
+        var song = songFor(name), now = document.getElementById("try-now");
+        if (now) now.innerHTML = "<b>" + song[0] + "</b> · " + song[1] + "<small>On " + name + "</small>";
+        if (navigator.vibrate) { try { navigator.vibrate(18); } catch (err) {} }
         if (music && !music.isPlaying()) music.start();
       }
       tryTiles.forEach(function (t) {
@@ -482,7 +504,10 @@
         if (tile) tuneIn(tile.textContent, tile.style.getPropertyValue("--h"), tile);
       });
       document.addEventListener("radiotiles:music", function (e) {
-        if (!e.detail.playing) { light(null); toast.classList.remove("show"); }
+        if (!e.detail.playing) {
+          light(null); toast.classList.remove("show");
+          var now = document.getElementById("try-now"); if (now) now.textContent = "Tap a tile to tune in";
+        }
       });
 
       // Idea 2: the phone in "How it works" switches screens: on its own every few seconds, or when you pick a step.
@@ -515,6 +540,6 @@
       }
     })();
   </script>
-  <script src="beat.js?v=6" data-track="assets/theme.mp3" data-bpm="127" data-offset="0.1" defer></script>
+  <script src="beat.js?v=7" data-track="assets/theme.mp3" data-bpm="127" data-offset="0.1" defer></script>
 </body>
 </html>
