@@ -618,13 +618,10 @@ article a { color: #ff9cc8; }
 .hv-frame.on .hv-zoom { transform: scale(1.06); }
 .hv-zoom img { width: 100%; height: 100%; object-fit: cover; }
 .hv-spot { position: absolute; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 10%; -webkit-tap-highlight-color: transparent; }
-.hv-spot::before, .hv-spot::after { content: ""; position: absolute; inset: -5%; border-radius: 14%; pointer-events: none; }
-.hv-spot::before { border: 2px solid transparent; transition: border-color .25s; }
-.hv-spot:hover::before, .hv-spot:focus-visible::before { border-color: rgba(255, 255, 255, .6); }
+/* No frame around the HomeView in the photo: the chip invites the tap. A ring shows only for keyboard focus. */
+.hv-spot::before { content: ""; position: absolute; inset: -5%; border-radius: 14%; pointer-events: none; border: 2px solid transparent; }
+.hv-spot:focus-visible::before { border-color: rgba(255, 255, 255, .6); }
 .hv-spot:focus-visible { outline: none; }
-.hv-spot::after { border: 2px solid rgba(255, 255, 255, .55); opacity: 0; animation: hvspot 2.8s ease-out infinite; }
-@keyframes hvspot { 0% { transform: scale(.98); opacity: .55; } 100% { transform: scale(1.22); opacity: 0; } }
-.hv-frame.playing .hv-spot::after { animation: none; }
 .hv-chip {
   position: absolute; left: 50%; bottom: calc(100% + 12px); transform: translateX(-50%);
   display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 6px 13px 6px 6px; border-radius: 999px;
@@ -666,7 +663,6 @@ article a { color: #ff9cc8; }
 @media (prefers-reduced-motion: reduce) {
   .hv-zoom { transition: none; }
   .hv-frame.on .hv-zoom { transform: none; }
-  .hv-spot::after { animation: none; }
 }
 @media (max-width: 560px) and (prefers-reduced-motion: reduce) {
   .hv-zoom, .hv-frame.on .hv-zoom { transform: scale(1.4); }
