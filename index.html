@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
   <header class="nav">
@@ -285,62 +285,31 @@
           <p>Apple HomeView puts a bright square screen and a room-filling speaker on your kitchen counter. Radio Tiles is ready for it from day one: your tiles come over from your iPhone, so anyone at home can tap a station and fill the room with live radio.</p>
         </div>
 
-        <div class="hv-stage reveal">
-          <div class="hv-room" style="--glow:280">
-            <div class="hv-lamp" aria-hidden="true"></div>
-            <div class="hv-counter" aria-hidden="true"></div>
-            <div class="hv-glow" aria-hidden="true"></div>
-            <div class="hv-mug" aria-hidden="true"><i></i></div>
-            <div class="hv-vase" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="hv" data-finish="silver">
-              <div class="hv-screen">
-                <div class="hv-display" role="group" aria-label="Radio Tiles on Apple HomeView (illustration). Tap a tile to play it.">
-                  <div class="hv-view hv-stations">
-                    <div class="hv-top"><span>9:41</span><span class="hv-tabs"><span class="on">Stations</span><span>Recently Played</span></span><span class="hv-wifi" aria-hidden="true"><i></i><i></i><i></i></span></div>
-                    <div class="hv-h">Stations</div>
-                    <div class="hv-tiles">
-                      <button class="hv-tile" type="button" data-genre="1" aria-pressed="false"><i class="tile" style="--h:194"></i><small></small></button>
-                      <button class="hv-tile" type="button" data-genre="6" aria-pressed="false"><i class="tile" style="--h:335"></i><small></small></button>
-                      <button class="hv-tile" type="button" data-genre="0" aria-pressed="false"><i class="tile" style="--h:3"></i><small></small></button>
-                      <button class="hv-tile" type="button" data-genre="3" aria-pressed="false"><i class="tile" style="--h:134"></i><small></small></button>
-                      <button class="hv-tile" type="button" data-genre="4" aria-pressed="false"><i class="tile" style="--h:224"></i><small></small></button>
-                      <button class="hv-tile" type="button" data-genre="2" aria-pressed="false"><i class="tile" style="--h:304"></i><small></small></button>
-                      <button class="hv-tile" type="button" data-genre="7" aria-pressed="false"><i class="tile" style="--h:170"></i><small></small></button>
-                      <button class="hv-tile" type="button" data-genre="8" aria-pressed="false"><i class="tile" style="--h:37"></i><small></small></button>
-                    </div>
-                    <button class="hv-bar" type="button"><i class="tile" style="--h:280"></i><span><b>Tap a tile to tune in</b><small>Radio Tiles</small></span><span class="hv-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
-                  </div>
-                  <div class="hv-view hv-np" aria-hidden="true">
-                    <button class="hv-back" type="button" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Stations</button>
-                    <i class="tile hv-art" style="--h:194" data-beat></i>
-                    <div class="hv-meta">
-                      <span class="hv-live"><i></i>Live</span>
-                      <b class="hv-song">Midnight Avenue</b>
-                      <span class="hv-artist">The Blue Hours</span>
-                      <span class="hv-station">Jazz Lounge</span>
-                      <span class="hv-eq big" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-                    </div>
-                    <div class="hv-ctrl">
-                      <button class="hv-like" type="button" tabindex="-1" aria-label="Like"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button>
-                      <button class="hv-prev" type="button" tabindex="-1" aria-label="Previous station"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.5 12L20 6v12zM3 12l8.5-6v12z"/></svg></button>
-                      <button class="hv-play" type="button" tabindex="-1" aria-label="Play or stop"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-stop" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="2"/></svg></button>
-                      <button class="hv-next" type="button" tabindex="-1" aria-label="Next station"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.5 12L4 18V6zM21 12l-8.5 6V6z"/></svg></button>
-                      <button class="hv-music" type="button" tabindex="-1" aria-label="Apple Music"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></button>
-                    </div>
-                  </div>
-                </div>
+        <div class="hv-show reveal" aria-label="Radio Tiles on Apple HomeView">
+          <div class="hv-frames">
+            <figure class="hv-frame on" data-genre="1" data-station="Jazz Lounge" style="--fx:82%;--fy:65%">
+              <div class="hv-zoom">
+                <img src="assets/homeview/marble-kitchen.jpg" alt="Apple HomeView on a marble kitchen island in the evening, playing Jazz Lounge in Radio Tiles" width="1600" height="1067">
+                <button class="hv-spot" type="button" aria-pressed="false" style="left:74.55%;top:52.54%;width:14.69%;height:25.14%"><span class="hv-chip"><i></i><b>Tap to listen</b></span></button>
               </div>
-              <div class="hv-base" aria-hidden="true"></div>
-            </div>
+            </figure>
+            <figure class="hv-frame" data-genre="4" data-station="Groove Lab" style="--fx:33%;--fy:55%">
+              <div class="hv-zoom">
+                <img src="assets/homeview/black-kitchen.jpg" alt="Apple HomeView on a black granite counter, showing Radio Tiles station tiles" width="1600" height="1067" loading="lazy">
+                <button class="hv-spot" type="button" aria-pressed="false" style="left:25.76%;top:44.29%;width:13.38%;height:23.21%"><span class="hv-chip"><i></i><b>Tap to listen</b></span></button>
+              </div>
+            </figure>
+            <figure class="hv-frame" data-genre="0" data-station="Lo-Fi Study" style="--fx:8%;--fy:66%">
+              <div class="hv-zoom">
+                <img src="assets/homeview/night-kitchen.jpg" alt="Apple HomeView late at night under the cabinet lights, playing Lo-Fi Study in Radio Tiles" width="1600" height="1067" loading="lazy">
+                <button class="hv-spot" type="button" aria-pressed="false" style="left:10%;top:56.88%;width:11.67%;height:20.16%"><span class="hv-chip"><i></i><b>Tap to listen</b></span></button>
+              </div>
+            </figure>
           </div>
-          <div class="hv-under">
-            <p class="hv-hint">Tap a tile on the screen. It really plays.</p>
-            <div class="hv-finish" role="group" aria-label="HomeView finish">
-              <button type="button" data-finish="silver" class="on" aria-pressed="true" aria-label="Silver"></button>
-              <button type="button" data-finish="starlight" aria-pressed="false" aria-label="Starlight"></button>
-              <button type="button" data-finish="pink" aria-pressed="false" aria-label="Pink"></button>
-              <button type="button" data-finish="gray" aria-pressed="false" aria-label="Space Gray"></button>
-            </div>
+          <div class="hv-pick" role="group" aria-label="Choose a kitchen">
+            <button type="button" class="on" aria-pressed="true"><b>Evening</b><small>Marble kitchen · Jazz Lounge</small><span class="bar" aria-hidden="true"></span></button>
+            <button type="button" aria-pressed="false"><b>Dinner time</b><small>Black kitchen · Groove Lab</small><span class="bar" aria-hidden="true"></span></button>
+            <button type="button" aria-pressed="false"><b>Late night</b><small>Cabinet lights · Lo-Fi Study</small><span class="bar" aria-hidden="true"></span></button>
           </div>
         </div>
 
@@ -361,7 +330,7 @@
             <p>Prefer AirPlay? Send the radio from the player to HomeView and HomePod together, in sync, all over the house.</p>
           </div>
         </div>
-        <p class="hv-note">Apple HomeView arrives November 13, 2026. Apps from iPhone need a paired, compatible iPhone nearby. The screen shown is an illustration.</p>
+        <p class="hv-note">Apple HomeView arrives November 13, 2026. Apps from iPhone need a paired, compatible iPhone nearby. Images are renderings of HomeView placed in real kitchen photos.</p>
       </div>
     </section>
 
@@ -652,88 +621,60 @@
           tryTiles.forEach(function (t) { t.querySelector(".try-name").textContent = COUNTRIES[cc][+t.dataset.genre]; });
           grid.classList.remove("switching");
           caption();
-          hvNames();
         }, 160);
       }
       chips.forEach(function (c) { c.addEventListener("click", function () { setCountry(c.dataset.cc); }); });
 
-      // Apple HomeView: the same tiles on the kitchen screen. Tap one and its station really plays;
-      // the Now Playing screen, the glow on the counter and the beat follow the music.
-      var hv = document.querySelector(".hv"), hvRoom = document.querySelector(".hv-room");
-      var hvTiles = hv ? Array.prototype.slice.call(hv.querySelectorAll(".hv-tile")) : [];
-      var HV_ORDER = hvTiles.map(function (t) { return +t.dataset.genre; });
-      var hvLast = HV_ORDER[0] || 1;
-      function hvNames() {
-        hvTiles.forEach(function (t) {
-          var g = +t.dataset.genre;
-          t.querySelector(".tile").textContent = COUNTRIES[country][g];
-          t.querySelector("small").textContent = GENRES[g].song[0];
-          t.setAttribute("aria-label", "Play " + COUNTRIES[country][g]);
+      // Apple HomeView: three real kitchens that cross-fade on their own. Tap the HomeView in a photo to hear its station.
+      var hvShowEl = document.querySelector(".hv-show");
+      var hvFrames = hvShowEl ? Array.prototype.slice.call(hvShowEl.querySelectorAll(".hv-frame")) : [];
+      var hvPicks = hvShowEl ? Array.prototype.slice.call(hvShowEl.querySelectorAll(".hv-pick button")) : [];
+      var hvIndex = 0, hvTimer = null, hvAuto = true, hvSeen = false, HV_DELAY = 6500;
+      var hvStill = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      function hvPlayingHere() {
+        var music = window.RadioTilesMusic, f = hvFrames[hvIndex];
+        return !!(f && music && music.isPlaying() && tunedGenre === +f.dataset.genre);
+      }
+      function hvSchedule() {
+        if (!hvShowEl) return;
+        clearTimeout(hvTimer);
+        var auto = hvAuto && hvSeen && !hvStill && !hvPlayingHere();
+        hvShowEl.classList.toggle("auto", auto);
+        if (auto) hvTimer = setTimeout(function () { hvGo(hvIndex + 1); }, HV_DELAY);
+      }
+      function hvGo(i) {
+        hvIndex = (i + hvFrames.length) % hvFrames.length;
+        hvFrames.forEach(function (f, k) { f.classList.toggle("on", k === hvIndex); });
+        hvPicks.forEach(function (b, k) {
+          var on = k === hvIndex; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false");
+          var bar = b.querySelector(".bar"); bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = "";
         });
-        hvSync();
+        hvSchedule();
       }
       function hvSync() {
-        if (!hv) return;
         var music = window.RadioTilesMusic, on = !!(music && music.isPlaying());
-        var live = on && tunedGenre >= 0, theme = on && tunedGenre < 0;
-        if (live) hvLast = tunedGenre;
-        var g = hvLast, name = COUNTRIES[country][g], song = GENRES[g].song;
-        hv.classList.toggle("playing", live);
-        hvTiles.forEach(function (t) {
-          var is = live && +t.dataset.genre === tunedGenre;
-          t.classList.toggle("on", is); t.setAttribute("aria-pressed", is ? "true" : "false");
+        hvFrames.forEach(function (f) {
+          var playing = on && tunedGenre === +f.dataset.genre, spot = f.querySelector(".hv-spot");
+          f.classList.toggle("playing", playing);
+          spot.setAttribute("aria-pressed", playing ? "true" : "false");
+          spot.setAttribute("aria-label", (playing ? "Stop " : "Play ") + f.dataset.station + " on HomeView");
+          f.querySelector(".hv-chip b").textContent = playing ? "Playing · " + f.dataset.station : "Tap to listen";
         });
-        var art = hv.querySelector(".hv-art");
-        art.style.setProperty("--h", GENRES[g].hue); art.textContent = name;
-        hv.querySelector(".hv-song").textContent = song[0];
-        hv.querySelector(".hv-artist").textContent = song[1];
-        hv.querySelector(".hv-station").textContent = name;
-        var bar = hv.querySelector(".hv-bar");
-        bar.querySelector(".tile").style.setProperty("--h", live ? GENRES[g].hue : theme ? 335 : 280);
-        bar.querySelector("b").textContent = live ? song[0] : theme ? "House – July" : "Tap a tile to tune in";
-        bar.querySelector("small").textContent = live ? song[1] + " · " + name : theme ? "Easy_Eva · Radio Tiles demo" : "Radio Tiles";
-        bar.classList.toggle("live", on);
-        hvRoom.style.setProperty("--glow", on ? (live ? GENRES[g].hue : 335) : 280);
-        hvRoom.classList.toggle("on", on);
-        hv.style.setProperty("--beat", (60 / (live ? GENRES[g].bpm : 127)).toFixed(3) + "s");
+        hvSchedule();
       }
-      function hvShow(np) {
-        hv.classList.toggle("np", np);
-        hv.querySelector(".hv-np").setAttribute("aria-hidden", np ? "false" : "true");
-        hv.querySelector(".hv-stations").setAttribute("aria-hidden", np ? "true" : "false");
-        hv.querySelectorAll(".hv-np button").forEach(function (b) { b.tabIndex = np ? 0 : -1; });
-        hv.querySelectorAll(".hv-stations button").forEach(function (b) { b.tabIndex = np ? -1 : 0; });
-      }
-      function hvTune(g) {
-        var music = window.RadioTilesMusic;
-        if (!(tunedGenre === g && music && music.isPlaying())) tuneIn(g, COUNTRIES[country][g], null);
-        hvShow(true);
-      }
-      if (hv) {
-        hvTiles.forEach(function (t) { t.addEventListener("click", function () { hvTune(+t.dataset.genre); }); });
-        hv.querySelector(".hv-bar").addEventListener("click", function () { hvShow(true); });
-        hv.querySelector(".hv-back").addEventListener("click", function () { hvShow(false); });
-        hv.querySelector(".hv-play").addEventListener("click", function () {
-          var music = window.RadioTilesMusic;
-          if (music && music.isPlaying() && tunedGenre >= 0) music.stop(); else tuneIn(hvLast, COUNTRIES[country][hvLast], null);
+      hvFrames.forEach(function (f) {
+        f.querySelector(".hv-spot").addEventListener("click", function () {
+          hvAuto = false;
+          tuneIn(+f.dataset.genre, f.dataset.station, null);
         });
-        function hvStep(d) {
-          var i = HV_ORDER.indexOf(hvLast), n = HV_ORDER[(i + d + HV_ORDER.length) % HV_ORDER.length];
-          tuneIn(n, COUNTRIES[country][n], null);
-        }
-        hv.querySelector(".hv-next").addEventListener("click", function () { hvStep(1); });
-        hv.querySelector(".hv-prev").addEventListener("click", function () { hvStep(-1); });
-        hv.querySelector(".hv-like").addEventListener("click", function () {
-          var b = hv.querySelector(".hv-like"); b.classList.toggle("on"); b.setAttribute("aria-pressed", b.classList.contains("on") ? "true" : "false");
-        });
-        document.querySelectorAll(".hv-finish button").forEach(function (b) {
-          b.addEventListener("click", function () {
-            hv.dataset.finish = b.dataset.finish;
-            document.querySelectorAll(".hv-finish button").forEach(function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false"); });
-          });
-        });
-        hvShow(false);
+      });
+      hvPicks.forEach(function (b, k) { b.addEventListener("click", function () { hvAuto = false; hvGo(k); }); });
+      if (hvShowEl && "IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          hvSeen = entries[0].isIntersecting; hvSchedule();
+        }, { threshold: 0.35 }).observe(hvShowEl);
       }
+      hvSync();
       // Like the app: the visitor's own country comes first when we have it.
       try {
         var region = (Intl.DateTimeFormat().resolvedOptions().locale || navigator.language || "").split("-").pop().toUpperCase();
@@ -775,6 +716,6 @@
       }
     })();
   </script>
-  <script src="beat.js?v=10" data-track="assets/theme.mp3" data-bpm="127" data-offset="0.1" defer></script>
+  <script src="beat.js?v=11" data-track="assets/theme.mp3" data-bpm="127" data-offset="0.1" defer></script>
 </body>
 </html>
