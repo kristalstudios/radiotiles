@@ -137,10 +137,14 @@
 
   // Visuals: heart bumps and a ripple leaves it on every kick.
   function pulseAt(t) {
-    if (!stages.length) return;
+    var beaters = document.querySelectorAll("[data-beat]");   // e.g. the artwork on the HomeView screen
+    if (!stages.length && !beaters.length) return;
     var wait = Math.max(0, (t - ctx.currentTime) * 1000);
     setTimeout(function () {
       if (!playing) return;
+      Array.prototype.forEach.call(beaters, function (el) {
+        el.classList.remove("kick"); void el.offsetWidth; el.classList.add("kick");
+      });
       stages.forEach(function (st) {
         st.classList.remove("kick"); void st.offsetWidth; st.classList.add("kick");
         var ring = document.createElement("span");
@@ -256,6 +260,7 @@
     current = null;
     Array.prototype.forEach.call(bars, function (r) { r.style.transform = ""; });
     stages.forEach(function (st) { st.classList.remove("kick"); });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-beat]"), function (el) { el.classList.remove("kick"); });
     setUI(false);
   }
 
