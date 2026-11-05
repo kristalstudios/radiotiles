@@ -1,5 +1,6 @@
-// Radio Tiles music: plays the track named in data-track on the script tag (House – July by Easy_Eva, Pixabay
-// Content License); without it, falls back to an upbeat loop synthesized live with Web Audio.
+// Radio Tiles music. The theme is the track named in data-track on the script tag (House – July by Easy_Eva);
+// each station tile on the page passes its own genre track (all from Pixabay, Pixabay Content License).
+// Without data-track it falls back to an upbeat loop synthesized live with Web Audio.
 // Nothing plays until the visitor presses play. The tile heart beats on every kick drum.
 (function () {
   "use strict";
@@ -18,7 +19,9 @@
   var TRACK = me && me.getAttribute("data-track");   // e.g. "assets/theme.mp3"
   // Tempo of the track, measured offline: the heart beats on this grid, in sync with audio.currentTime.
   var TRACK_BPM = me && +me.getAttribute("data-bpm") || 0, TRACK_OFFSET = me && +me.getAttribute("data-offset") || 0;
-  var audio = null, trackNode = null, beatClock = null, lastBeat = -1;
+  // The site theme (House – July) plays from the play buttons and the hearts; station tiles bring their own tracks.
+  var THEME = TRACK ? { src: TRACK, bpm: TRACK_BPM, offset: TRACK_OFFSET } : null;
+  var current = null, players = {}, beatClock = null, lastBeat = -1;
   var playing = false, step = 0, loop = 0, nextTime = 0;
   // Every beating heart on the page (the one in "Try it" and the one at the bottom).
   var stages = Array.prototype.slice.call(document.querySelectorAll(".beat-stage"));
@@ -148,17 +151,44 @@
     }, wait);
   }
 
+  function player(track) {
+    if (!players[track.src]) {
+      var el = new Audio(track.src); el.loop = true; el.crossOrigin = "anonymous"; el.preload = "auto";
+      var node = ctx.createMediaElementSource(el); node.connect(master);
+      players[track.src] = { audio: el, node: node };
+    }
+    return players[track.src].audio;
+  }
+
   // With a real song there is no sequencer: a clock reads the song's position and pulses on every beat.
   function startBeatClock() {
     clearInterval(beatClock); lastBeat = -1;
-    if (!TRACK_BPM) return;
-    var period = 60 / TRACK_BPM;
+    if (!current || !current.bpm) return;
+    var period = 60 / current.bpm, el = player(current), off = current.offset || 0;
     beatClock = setInterval(function () {
-      if (!audio || audio.paused) return;
-      var t = audio.currentTime - TRACK_OFFSET;
+      if (el.paused) return;
+      var t = el.currentTime - off;
       var beat = t < 0 ? -1 : Math.floor(t / period);
       if (beat !== lastBeat) { lastBeat = beat; if (beat >= 0) pulseAt(ctx.currentTime); }
     }, 15);
+  }
+
+  // A short burst of radio static between stations, like turning the dial.
+  function tuneStatic() {
+    var t = ctx.currentTime;
+    noiseHit(t, "bandpass", 2600, 0.6, 0.12, 0.26);
+    noiseHit(t + 0.05, "highpass", 5000, 0.7, 0.05, 0.2);
+  }
+
+  // Station tiles "join the broadcast" somewhere in the middle of the song, like real radio.
+  function playTrack(track) {
+    var el = player(track);
+    function go() {
+      if (track.live && isFinite(el.duration) && el.duration > 8) el.currentTime = Math.random() * (el.duration - 6);
+      else if (!track.live) el.currentTime = 0;
+      el.play().then(startBeatClock).catch(function () { stop(); });
+    }
+    if (el.readyState >= 1) go(); else el.addEventListener("loadedmetadata", go, { once: true });
   }
 
   function drawBars() {
@@ -183,20 +213,27 @@
     document.dispatchEvent(new CustomEvent("radiotiles:music", { detail: { playing: on } }));
   }
 
-  function start() {
-    if (playing) return;
+  // start() plays the theme; start(track) plays a station's track, switching with a burst of static if music is on.
+  function start(track) {
+    track = track || THEME;
     if (!ctx) setup();
     ctx.resume();
+    if (playing && track && current && current.src === track.src) return;
+    if (playing && track) {
+      if (current) player(current).pause();
+      tuneStatic();
+      current = track;
+      playTrack(track);
+      return;
+    }
+    if (playing) return;
     playing = true; step = 0; loop = 0; nextTime = ctx.currentTime + 0.08;
     master.gain.cancelScheduledValues(ctx.currentTime);
     master.gain.setValueAtTime(0.0001, ctx.currentTime);
-    master.gain.exponentialRampToValueAtTime(TRACK ? 0.7 : 0.5, ctx.currentTime + 0.5);
-    if (TRACK) {
-      if (!audio) {
-        audio = new Audio(TRACK); audio.loop = true; audio.crossOrigin = "anonymous"; audio.preload = "auto";
-        trackNode = ctx.createMediaElementSource(audio); trackNode.connect(master);
-      }
-      audio.play().then(startBeatClock).catch(function () { stop(); });
+    master.gain.exponentialRampToValueAtTime(track ? 0.7 : 0.5, ctx.currentTime + 0.5);
+    if (track) {
+      current = track;
+      playTrack(track);
     } else {
       timer = setInterval(tick, 25); tick();
     }
@@ -205,13 +242,18 @@
   }
 
   function stop() {
+    if (!playing) return;
     playing = false;
     clearInterval(timer); clearInterval(beatClock); cancelAnimationFrame(raf);
-    var now = ctx.currentTime;
+    var now = ctx.currentTime, was = current;
     master.gain.cancelScheduledValues(now);
     master.gain.setValueAtTime(Math.max(master.gain.value, 0.0001), now);
     master.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
-    setTimeout(function () { if (!playing) { if (audio) audio.pause(); ctx.suspend(); } }, 450);
+    setTimeout(function () {
+      if (was && (!playing || current !== was)) player(was).pause();   // never leave two stations playing
+      if (!playing) ctx.suspend();
+    }, 450);
+    current = null;
     Array.prototype.forEach.call(bars, function (r) { r.style.transform = ""; });
     stages.forEach(function (st) { st.classList.remove("kick"); });
     setUI(false);
@@ -230,7 +272,11 @@
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playing ? stop() : start(); }
     });
   });
-  window.RadioTilesMusic = { start: start, stop: stop, isPlaying: function () { return playing; } };
+  window.RadioTilesMusic = {
+    start: start, stop: stop,
+    isPlaying: function () { return playing; },
+    nowPlaying: function () { return current && current.src; }
+  };
 
   // Pause when the tab goes to the background.
   document.addEventListener("visibilitychange", function () { if (document.hidden && playing) stop(); });

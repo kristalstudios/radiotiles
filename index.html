@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
   <header class="nav">
@@ -80,19 +80,30 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Try it. <span class="grad-text">Tap a station.</span></h2>
-          <p>Every tile is a station. Tap one to tune in, tap it again to stop. Sound on.</p>
+          <p>Pick a country, then tap a tile to tune in. Tap it again to stop. Sound on.</p>
+        </div>
+        <div class="countries" role="group" aria-label="Country">
+          <button type="button" class="country" data-cc="US" aria-pressed="true"><span class="flag" aria-hidden="true">🇺🇸</span>USA</button>
+          <button type="button" class="country" data-cc="GB" aria-pressed="false"><span class="flag" aria-hidden="true">🇬🇧</span>UK</button>
+          <button type="button" class="country" data-cc="DE" aria-pressed="false"><span class="flag" aria-hidden="true">🇩🇪</span>Germany</button>
+          <button type="button" class="country" data-cc="FR" aria-pressed="false"><span class="flag" aria-hidden="true">🇫🇷</span>France</button>
+          <button type="button" class="country" data-cc="BR" aria-pressed="false"><span class="flag" aria-hidden="true">🇧🇷</span>Brazil</button>
+          <button type="button" class="country" data-cc="JP" aria-pressed="false"><span class="flag" aria-hidden="true">🇯🇵</span>Japan</button>
+          <button type="button" class="country" data-cc="MX" aria-pressed="false"><span class="flag" aria-hidden="true">🇲🇽</span>Mexico</button>
+          <button type="button" class="country" data-cc="AU" aria-pressed="false"><span class="flag" aria-hidden="true">🇦🇺</span>Australia</button>
+          <a class="country more" href="#explore"><span class="flag" aria-hidden="true">🌍</span>Every country</a>
         </div>
         <div class="try-layout">
           <div class="try-grid" role="group" aria-label="Demo stations">
-            <button class="tile try" type="button" style="--h:3" aria-pressed="false"><span class="try-name">Lo-Fi Study</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-            <button class="tile try" type="button" style="--h:194" aria-pressed="false"><span class="try-name">Jazz Lounge</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-            <button class="tile try" type="button" style="--h:304" aria-pressed="false"><span class="try-name">Morning Jazz</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-            <button class="tile try" type="button" style="--h:134" aria-pressed="false"><span class="try-name">Country Roads</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-            <button class="tile try" type="button" style="--h:224" aria-pressed="false"><span class="try-name">Groove Lab</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-            <button class="tile try" type="button" style="--h:257" aria-pressed="false"><span class="try-name">Arena Rock</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-            <button class="tile try" type="button" style="--h:335" aria-pressed="false"><span class="try-name">Dance Nation</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-            <button class="tile try" type="button" style="--h:170" aria-pressed="false"><span class="try-name">Pop Hits</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
-            <button class="tile try" type="button" style="--h:37" aria-pressed="false"><span class="try-name">Vintage Vinyl</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="0" type="button" style="--h:3" aria-pressed="false"><span class="try-name">Lo-Fi Study</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="1" type="button" style="--h:194" aria-pressed="false"><span class="try-name">Jazz Lounge</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="2" type="button" style="--h:304" aria-pressed="false"><span class="try-name">Morning Jazz</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="3" type="button" style="--h:134" aria-pressed="false"><span class="try-name">Country Roads</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="4" type="button" style="--h:224" aria-pressed="false"><span class="try-name">Groove Lab</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="5" type="button" style="--h:257" aria-pressed="false"><span class="try-name">Arena Rock</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="6" type="button" style="--h:335" aria-pressed="false"><span class="try-name">Dance Nation</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="7" type="button" style="--h:170" aria-pressed="false"><span class="try-name">Pop Hits</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
+            <button class="tile try" data-genre="8" type="button" style="--h:37" aria-pressed="false"><span class="try-name">Vintage Vinyl</span><span class="try-live" aria-hidden="true"><span class="eq"><i></i><i></i><i></i></span>Live</span></button>
           </div>
           <div class="try-heart">
             <div class="beat-stage try-stage">
@@ -244,11 +255,11 @@
           </div>
         </div>
 
-        <div class="feature reveal">
+        <div class="feature reveal" id="explore">
           <div class="feature-copy">
             <span class="tag">Explore</span>
             <h2>Thousands of stations.</h2>
-            <p>Search the open Radio Browser directory by name, country or genre. Stations from your country come first. Got a stream link? Paste it in.</p>
+            <p>Search the open Radio Browser directory of stations from all over the world, by name, country or genre. Stations from your country come first. Got a stream link? Paste it in.</p>
           </div>
           <div class="feature-visual">
             <div class="explore" role="img" aria-label="Searching for stations by country and genre">
@@ -455,59 +466,108 @@
       setDrift();
       window.addEventListener("resize", setDrift);
 
-      // Idea 1: tap a floor tile to "tune in": it lights up and a now-playing card shows an example song.
-      var songs = {"Lo-Fi Study": ["Rainy Window", "Paper Lanterns"], "Jazz Lounge": ["Midnight Avenue", "The Blue Hours"],
-        "Morning Jazz": ["Coffee and Sunrise", "Trio Alba"], "Country Roads": ["Gravel and Gold", "Willow Creek"],
-        "Groove Lab": ["Get Up Tonight", "Velvet Funk Society"], "Arena Rock": ["Highway Lights", "The Northbound"],
-        "Dance Nation": ["Feel It Now", "Neon Hearts"], "Pop Hits": ["Summer Signal", "Lila Mae"],
-        "Vintage Vinyl": ["Saturday Dance", "The Rivieras"], "Night Drive": ["Exit 42", "Chrome Cassette"],
-        "Synthwave": ["Neon Coast", "Laser Palms"], "Soul Kitchen": ["Sweet Talk", "Marvin Lane"],
-        "Ocean Waves": ["Low Tide", "Salt and Sand"], "Deep Focus": ["Quiet Hours", "Northern Study"],
-        "Sunday Jazz": ["Late Brunch", "The Corner Trio"], "Club Mix": ["Hands Up", "Disco Planet"],
-        "Coffee House": ["Second Cup", "June Avenue"], "Blues Night": ["Last Train Home", "Big River Band"]};
-      var toast = document.getElementById("tune-toast"), toastTimer, tuned = null;
-      var tryTiles = document.querySelectorAll(".try-grid .tile");
-      function songFor(name) { return songs[name] || ["Live", "Radio Tiles"]; }
-      function showToast(name, hue) {
-        var song = songFor(name);
-        toast.innerHTML = '<i class="tile" style="--h:' + hue + '"></i><span><b>' + song[0] + '</b><small>' + song[1] + " · " + name +
+      // Tap a station tile: it lights up and its own genre track starts (all tracks: Pixabay Content License).
+      // Station names are made up for the demo; the music is the same genre track whichever country you pick.
+      var GENRES = [
+        { src: "assets/tracks/lofi.mp3", bpm: 75, offset: 0.7, hue: 3, song: ["Rainy Window", "Paper Lanterns"] },
+        { src: "assets/tracks/jazzlounge.mp3", bpm: 95, offset: 0.15, hue: 194, song: ["Midnight Avenue", "The Blue Hours"] },
+        { src: "assets/tracks/morningjazz.mp3", bpm: 120, offset: 0.08, hue: 304, song: ["Coffee and Sunrise", "Trio Alba"] },
+        { src: "assets/tracks/country.mp3", bpm: 73.5, offset: 0.3, hue: 134, song: ["Gravel and Gold", "Willow Creek"] },
+        { src: "assets/tracks/funk.mp3", bpm: 122, offset: 0.33, hue: 224, song: ["Get Up Tonight", "Velvet Funk Society"] },
+        { src: "assets/tracks/rock.mp3", bpm: 97, offset: 0.4, hue: 257, song: ["Highway Lights", "The Northbound"] },
+        { src: "assets/theme.mp3", bpm: 127, offset: 0.1, hue: 335, song: ["Feel It Now", "Neon Hearts"] },
+        { src: "assets/tracks/pop.mp3", bpm: 120, offset: 0.04, hue: 170, song: ["Summer Signal", "Lila Mae"] },
+        { src: "assets/tracks/swing.mp3", bpm: 110, offset: 0.04, hue: 37, song: ["Saturday Dance", "The Rivieras"] }
+      ];
+      var COUNTRIES = {
+        US: ["Lo-Fi Study", "Jazz Lounge", "Morning Jazz", "Country Roads", "Groove Lab", "Arena Rock", "Dance Nation", "Pop Hits", "Vintage Vinyl"],
+        GB: ["London Lo-Fi", "Soho Jazz Club", "Sunday Brunch Jazz", "Highland Folk", "Northern Soul", "Brit Rock", "UK Garage", "Chart Hits UK", "Swinging Sixties"],
+        DE: ["Berlin Lo-Fi", "Jazz am Abend", "Kaffeehaus Jazz", "Alpen Country", "Funky Hamburg", "Deutschrock", "Techno Berlin", "Pop Charts DE", "Oldie Welle"],
+        FR: ["Lo-Fi Paris", "Jazz Rive Gauche", "Café Crème Jazz", "Route du Sud", "Funk Marseille", "Rock Français", "French Touch", "Hits France", "Vinyle Rétro"],
+        BR: ["Lo-Fi Rio", "Bossa Lounge", "Manhã de Jazz", "Sertanejo Raiz", "Groove Brasil", "Rock Nacional", "Baile Dance", "Pop Brasil", "Samba Antigo"],
+        JP: ["Tokyo Lo-Fi", "Ginza Jazz Bar", "Kissa Morning Jazz", "Kyoto Folk", "City Pop Groove", "J-Rock Live", "Shibuya Dance", "J-Pop Hits", "Showa Retro"],
+        MX: ["Lo-Fi CDMX", "Jazz en la Condesa", "Café con Jazz", "Norteño Clásico", "Groove Latino", "Rock en Español", "Dance México", "Pop Latino", "Bolero Vintage"],
+        AU: ["Sydney Lo-Fi", "Harbour Jazz", "Byron Morning Jazz", "Outback Country", "Melbourne Funk", "Aussie Rock", "Bondi Dance", "Pop Hits Oz", "Golden Oldies AU"]
+      };
+      var FLOOR_GENRE = { "Lo-Fi Study": 0, "Jazz Lounge": 1, "Morning Jazz": 2, "Country Roads": 3, "Groove Lab": 4, "Arena Rock": 5,
+        "Dance Nation": 6, "Pop Hits": 7, "Vintage Vinyl": 8, "Night Drive": 6, "Synthwave": 7, "Soul Kitchen": 4, "Ocean Waves": 0,
+        "Deep Focus": 0, "Sunday Jazz": 2, "Club Mix": 6, "Coffee House": 1, "Blues Night": 8 };
+      var toast = document.getElementById("tune-toast"), toastTimer, tunedGenre = -1, country = "US";
+      var tryTiles = Array.prototype.slice.call(document.querySelectorAll(".try-grid .tile"));
+      var chips = Array.prototype.slice.call(document.querySelectorAll(".country[data-cc]"));
+      var nowLine = document.getElementById("try-now");
+      function trackFor(g) { var x = GENRES[g]; return { src: x.src, bpm: x.bpm, offset: x.offset, live: true }; }
+      function showToast(name, g) {
+        var song = GENRES[g].song;
+        toast.innerHTML = '<i class="tile" style="--h:' + GENRES[g].hue + '"></i><span><b>' + song[0] + '</b><small>' + song[1] + " · " + name +
           '</small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>';
         toast.classList.add("show");
         clearTimeout(toastTimer);
         toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 6000);
       }
-      function light(name) {
-        tuned = name;
+      function caption() {
+        if (!nowLine) return;
+        if (tunedGenre < 0) { nowLine.textContent = "Tap a tile to tune in"; return; }
+        var song = GENRES[tunedGenre].song, chip = chips.filter(function (c) { return c.dataset.cc === country; })[0];
+        nowLine.innerHTML = "<b>" + song[0] + "</b> · " + song[1] + "<small>On " + COUNTRIES[country][tunedGenre] +
+          (chip ? " " + chip.querySelector(".flag").textContent : "") + "</small>";
+      }
+      function light(g) {
+        tunedGenre = g;
         floor.querySelectorAll(".tile.lit").forEach(function (t) { t.classList.remove("lit"); });
         tryTiles.forEach(function (t) {
-          var on = name !== null && t.textContent.indexOf(name) === 0;
+          var on = +t.dataset.genre === g;
           t.classList.toggle("lit", on); t.setAttribute("aria-pressed", on ? "true" : "false");
         });
+        caption();
       }
-      // Tap a tile: it lights up, a now-playing card appears and the music starts. Tap the same tile again to stop.
-      function tuneIn(name, hue, el) {
+      // Tap a tile: it lights up and its station starts, with a burst of static when switching. Tap it again to stop.
+      function tuneIn(g, name, el) {
         var music = window.RadioTilesMusic;
-        if (tuned === name && music && music.isPlaying()) { music.stop(); return; }
-        light(name);
-        // The "Try it" heart shows the song itself; the floor in the hero has no heart nearby, so it gets the card.
-        if (el && el.closest(".tile-floor")) { el.classList.add("lit"); showToast(name, hue); }
-        var song = songFor(name), now = document.getElementById("try-now");
-        if (now) now.innerHTML = "<b>" + song[0] + "</b> · " + song[1] + "<small>On " + name + "</small>";
+        if (!music) return;
+        if (tunedGenre === g && music.isPlaying()) { music.stop(); return; }
+        light(g);
+        if (el && el.closest(".tile-floor")) { el.classList.add("lit"); showToast(name, g); }
         if (navigator.vibrate) { try { navigator.vibrate(18); } catch (err) {} }
-        if (music && !music.isPlaying()) music.start();
+        music.start(trackFor(g));
+        setPill(GENRES[g].song[0], GENRES[g].song[1] + " · " + (el && el.closest(".tile-floor") ? name : COUNTRIES[country][g]));
+      }
+      function setPill(title, sub) {
+        var pill = document.getElementById("np-float");
+        if (!pill) return;
+        pill.querySelector("b").textContent = title; pill.querySelector("small").textContent = sub;
       }
       tryTiles.forEach(function (t) {
-        t.addEventListener("click", function () { tuneIn(t.querySelector(".try-name").textContent, t.style.getPropertyValue("--h"), t); });
+        t.addEventListener("click", function () { tuneIn(+t.dataset.genre, t.querySelector(".try-name").textContent, t); });
       });
       floor.addEventListener("click", function (e) {
         var tile = e.target.closest(".tile");
-        if (tile) tuneIn(tile.textContent, tile.style.getPropertyValue("--h"), tile);
+        if (!tile) return;
+        var g = FLOOR_GENRE[tile.textContent]; if (g === undefined) g = 6;
+        tuneIn(g, tile.textContent, tile);
       });
+      // Pick a country: the tiles become that country's stations (the same genres, so a playing tile keeps playing).
+      function setCountry(cc) {
+        if (!COUNTRIES[cc]) return;
+        country = cc;
+        chips.forEach(function (c) { var on = c.dataset.cc === cc; c.classList.toggle("on", on); c.setAttribute("aria-pressed", on ? "true" : "false"); });
+        var grid = document.querySelector(".try-grid");
+        grid.classList.add("switching");
+        setTimeout(function () {
+          tryTiles.forEach(function (t) { t.querySelector(".try-name").textContent = COUNTRIES[cc][+t.dataset.genre]; });
+          grid.classList.remove("switching");
+          caption();
+        }, 160);
+      }
+      chips.forEach(function (c) { c.addEventListener("click", function () { setCountry(c.dataset.cc); }); });
+      // Like the app: the visitor's own country comes first when we have it.
+      try {
+        var region = (Intl.DateTimeFormat().resolvedOptions().locale || navigator.language || "").split("-").pop().toUpperCase();
+        if (COUNTRIES[region] && region !== "US") setCountry(region); else setCountry("US");
+      } catch (err) { setCountry("US"); }
       document.addEventListener("radiotiles:music", function (e) {
-        if (!e.detail.playing) {
-          light(null); toast.classList.remove("show");
-          var now = document.getElementById("try-now"); if (now) now.textContent = "Tap a tile to tune in";
-        }
+        if (!e.detail.playing) { light(-1); toast.classList.remove("show"); }
+        else if (window.RadioTilesMusic.nowPlaying() === "assets/theme.mp3" && tunedGenre !== 6) { light(-1); setPill("House – July", "Easy_Eva · Radio Tiles demo"); }
       });
 
       // Idea 2: the phone in "How it works" switches screens: on its own every few seconds, or when you pick a step.
@@ -540,6 +600,6 @@
       }
     })();
   </script>
-  <script src="beat.js?v=7" data-track="assets/theme.mp3" data-bpm="127" data-offset="0.1" defer></script>
+  <script src="beat.js?v=9" data-track="assets/theme.mp3" data-bpm="127" data-offset="0.1" defer></script>
 </body>
 </html>

@@ -573,3 +573,23 @@ article a { color: #ff9cc8; }
   .try-now { min-height: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .beat-stage.kick .heart { animation: none; } }
+
+/* ---------- Countries for the Try it tiles ---------- */
+.countries { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: -12px auto 34px; max-width: 900px; }
+.country {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px; border-radius: 999px; cursor: pointer;
+  font: 600 15px/1 system-ui, -apple-system, sans-serif; color: var(--text); text-decoration: none;
+  background: var(--surface); border: 1px solid var(--line); transition: background .2s, transform .15s;
+}
+.country:hover { background: var(--surface-2); transform: translateY(-1px); }
+.country.on { background: #fff; color: #140d1c; border-color: #fff; }
+.country:focus-visible { outline: 2px solid #ff9cc8; outline-offset: 2px; }
+.country .flag { font-size: 18px; line-height: 1; }
+.country.more { color: var(--muted); }
+.try-grid .try-name { transition: opacity .16s ease, transform .16s ease; }
+.try-grid.switching .try-name { opacity: 0; transform: translateY(6px); }
+@media (max-width: 560px) {
+  .countries { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; margin: -10px -16px 26px; padding: 2px 16px 6px; scrollbar-width: none; }
+  .countries::-webkit-scrollbar { display: none; }
+  .country { flex: none; }
+}
