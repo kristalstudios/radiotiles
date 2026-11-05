@@ -177,31 +177,26 @@ h2 {
 .looks .tile.icon-style { background: #f3eee6; }
 .looks .tile.icon-style svg { width: 70%; height: auto; }
 
-/* CarPlay mockup */
-.carplay {
-  width: 100%; max-width: 520px; aspect-ratio: 16 / 8.6; border-radius: 26px; background: #050507;
-  box-shadow: 0 0 0 10px #18151c, 0 0 0 11px #2d2833, 0 40px 80px rgba(0, 0, 0, .55);
-  display: grid; grid-template-columns: 58px 1fr; overflow: hidden;
+/* CarPlay: real screenshots of a wide car display, full width under the text, in a dark bezel. */
+.feature-wide { grid-template-columns: minmax(0, 1fr); gap: 34px; }
+.feature-wide .feature-copy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 60px; align-items: center; }
+.feature-wide .feature-copy > * { grid-column: 1; }
+.feature-wide .feature-copy > .tag { justify-self: start; }
+.feature-wide .feature-copy > ul { grid-column: 2; grid-row: 1 / 4; margin: 0; }
+.feature-wide .feature-visual { flex-direction: column; gap: 18px; }
+.feature-wide .feature-visual::before { inset: 0 12%; }
+.cp-screen {
+  --bezel: clamp(5px, .9vw, 10px);
+  position: relative; width: 100%; aspect-ratio: 2200 / 643; border-radius: clamp(14px, 2.2vw, 26px); background: #000; overflow: hidden;
+  box-shadow: 0 0 0 var(--bezel) #18151c, 0 0 0 calc(var(--bezel) + 1px) #2d2833, 0 40px 80px rgba(0, 0, 0, .55);
 }
-.cp-side { background: #141218; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 14px 0; font-size: 12px; font-weight: 600; }
-.cp-side i { display: block; width: 32px; height: 32px; border-radius: 9px; background: #2a2630; }
-.cp-side i.on { background: var(--grad); }
-.cp-main { padding: 14px 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.cp-tabs { display: flex; justify-content: center; gap: 6px; font-size: 12px; font-weight: 600; }
-.cp-tabs span { padding: 4px 12px; border-radius: 999px; color: #a8a0b3; }
-.cp-tabs span.on { background: #322d38; color: #fff; }
-.cp-label { font-size: 12px; color: #a8a0b3; font-weight: 600; }
-.cp-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.cp-row .tile { font-size: 13px; border-radius: 16%; }
-.cp-row .playing { outline: 2px solid #fff; outline-offset: 2px; }
-.cp-now { margin-top: auto; display: flex; align-items: center; gap: 10px; background: #141218; border-radius: 12px; padding: 8px 10px; }
-.cp-now .tile { width: 36px; font-size: 6px; border-radius: 8px; padding: 4px; }
-.cp-now b { display: block; font-size: 13px; }
-.cp-now small { color: #a8a0b3; font-size: 11px; }
-.cp-now .eq { margin-left: auto; display: flex; gap: 2px; align-items: flex-end; height: 14px; }
-.cp-now .eq i { width: 3px; background: #ff5f8f; border-radius: 2px; animation: eq 1s ease-in-out infinite; }
-.cp-now .eq i:nth-child(2) { animation-delay: -.3s; }
-.cp-now .eq i:nth-child(3) { animation-delay: -.6s; }
+.cp-shot { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .6s ease; }
+.cp-shot.on { opacity: 1; }
+.cp-switch { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); }
+.cp-switch button { font: inherit; font-size: 14px; font-weight: 600; color: var(--muted); background: none; border: 0; padding: 8px 16px; border-radius: 999px; cursor: pointer; }
+.cp-switch button.on { background: rgba(255, 255, 255, .12); color: var(--text); }
+.cp-switch button:focus-visible { outline: 2px solid #ff9cc8; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .cp-shot { transition: none; } }
 @keyframes eq { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 
 /* Explore mockup */
@@ -315,6 +310,9 @@ article a { color: #ff9cc8; }
   .feature.flip .feature-visual { order: 0; }
   .feature-copy { text-align: center; }
   .feature ul { justify-items: center; }
+  .feature-wide .feature-copy { grid-template-columns: minmax(0, 1fr); }
+  .feature-wide .feature-copy > .tag { justify-self: center; }
+  .feature-wide .feature-copy > ul { grid-column: 1; grid-row: auto; margin-top: 24px; }
   .grid-3 { grid-template-columns: 1fr 1fr; }
   .plans { grid-template-columns: 1fr; }
   section { padding: 80px 0; }
@@ -331,11 +329,6 @@ article a { color: #ff9cc8; }
   .tile-floor { width: 1100px; gap: 16px; }
   .tile-floor .tile { font-size: 19px; }
   .plan { padding: 26px 22px; }
-  .carplay { aspect-ratio: auto; grid-template-columns: 44px 1fr; border-radius: 20px; }
-  .cp-side i { width: 26px; height: 26px; }
-  .cp-main { padding: 12px; gap: 10px; }
-  .cp-row { gap: 8px; }
-  .cp-row .tile { font-size: 10px; }
   .feature li { text-align: left; }
 }
 

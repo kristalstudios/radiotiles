@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
   <header class="nav">
@@ -138,7 +138,7 @@
           <div class="phone story-phone">
             <img class="shot on" src="assets/home.jpg" alt="The home screen with station tiles" width="660" height="1434">
             <img class="shot" src="assets/player-live.jpg" alt="The full-screen player" width="660" height="1434" loading="lazy">
-            <img class="shot" src="assets/player.jpg" alt="The player with a sleep timer counting down" width="660" height="1434" loading="lazy">
+            <img class="shot" src="assets/player.jpg" alt="The sleep timer menu: in 15 minutes to 2 hours, or when this song ends" width="660" height="1434" loading="lazy">
             <img class="shot" src="assets/pro.jpg" alt="The Radio Tiles Pro screen" width="660" height="1434" loading="lazy">
           </div>
           <div class="steps" role="group" aria-label="Steps">
@@ -207,7 +207,7 @@
           </div>
         </div>
 
-        <div class="feature flip reveal" id="carplay">
+        <div class="feature feature-wide reveal" id="carplay">
           <div class="feature-copy">
             <span class="tag">CarPlay</span>
             <h2>Made for the drive.</h2>
@@ -219,23 +219,14 @@
             </ul>
           </div>
           <div class="feature-visual">
-            <div class="carplay" role="img" aria-label="Radio Tiles in CarPlay: a row of station tiles and the song now playing">
-              <div class="cp-side"><span>9:41</span><i class="on"></i><i></i><i></i></div>
-              <div class="cp-main">
-                <div class="cp-tabs"><span class="on">Stations</span><span>Recently Played</span></div>
-                <div class="cp-label">Stations</div>
-                <div class="cp-row">
-                  <div class="tile" style="--h:3">Lo-Fi Study</div>
-                  <div class="tile playing" style="--h:194">Jazz Lounge</div>
-                  <div class="tile" style="--h:134">Country Roads</div>
-                  <div class="tile" style="--h:257">Arena Rock</div>
-                </div>
-                <div class="cp-now">
-                  <div class="tile" style="--h:194">Jazz Lounge</div>
-                  <div><b>Keep It Smooth</b><small>Lali P · Jazz Lounge</small></div>
-                  <div class="eq"><i></i><i></i><i></i></div>
-                </div>
-              </div>
+            <!-- Real CarPlay screenshots (demo stations, dark mode, a wide car display). -->
+            <div class="cp-screen">
+              <img class="cp-shot on" src="assets/carplay-stations.jpg" alt="Radio Tiles in CarPlay: station tiles, All Stations, Top of the Week and the song now playing" width="2200" height="643" loading="lazy">
+              <img class="cp-shot" src="assets/carplay-playing.jpg" alt="Now Playing in CarPlay: Jazz Lounge, Blue Lounge by Reza Khan" width="2200" height="643" loading="lazy">
+            </div>
+            <div class="cp-switch" role="group" aria-label="CarPlay screens">
+              <button type="button" class="on" data-cp="0" aria-pressed="true">Stations</button>
+              <button type="button" data-cp="1" aria-pressed="false">Now Playing</button>
             </div>
           </div>
         </div>
@@ -698,6 +689,17 @@
       }
       steps.forEach(function (s, k) { s.addEventListener("click", function () { showStep(k); }); });
       if (steps.length) showStep(0);
+
+      // CarPlay: the real screens switch on their own (Stations, Now Playing); a tap on a button picks one and stops it.
+      var cpShots = document.querySelectorAll(".cp-shot"), cpButtons = document.querySelectorAll(".cp-switch button"), cpTimer;
+      function showCarPlay(i, auto) {
+        cpButtons.forEach(function (b, k) { b.classList.toggle("on", k === i); b.setAttribute("aria-pressed", k === i ? "true" : "false"); });
+        cpShots.forEach(function (img, k) { img.classList.toggle("on", k === i); });
+        clearTimeout(cpTimer);
+        if (auto && !still) cpTimer = setTimeout(function () { showCarPlay((i + 1) % cpShots.length, true); }, 5000);
+      }
+      cpButtons.forEach(function (b, k) { b.addEventListener("click", function () { showCarPlay(k, false); }); });
+      if (cpShots.length) showCarPlay(0, true);
 
       // Idea 6: the hero video stays still for people who prefer less motion.
       var video = document.querySelector(".screen-video");
