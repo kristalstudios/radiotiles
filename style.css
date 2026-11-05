@@ -338,3 +338,74 @@ article a { color: #ff9cc8; }
   .cp-row .tile { font-size: 10px; }
   .feature li { text-align: left; }
 }
+
+/* ---------- Beating tile heart (like the app's launch screen) + music ---------- */
+.beat-stage {
+  position: relative; width: 260px; height: 260px; margin: 0 auto 36px;
+  display: grid; place-items: center; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent;
+}
+.beat-stage:focus-visible { box-shadow: 0 0 0 3px rgba(255, 255, 255, .5); border-radius: 50%; }
+.beat-stage .ring {
+  position: absolute; inset: 18%; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .35);
+  opacity: 0; pointer-events: none; animation: ripple 2.7s ease-out infinite;
+}
+.beat-stage .ring:nth-child(2) { animation-delay: .9s; }
+.beat-stage .ring:nth-child(3) { animation-delay: 1.8s; }
+.beat-stage .ring.live { animation: ripple-live 1.25s ease-out forwards; border-color: rgba(255, 170, 210, .55); }
+@keyframes ripple { from { transform: scale(1); opacity: .7; } to { transform: scale(2.3); opacity: 0; } }
+@keyframes ripple-live { from { transform: scale(.95); opacity: .85; } to { transform: scale(2.1); opacity: 0; } }
+.heart {
+  width: 100%; height: 100%; overflow: visible;
+  filter: drop-shadow(0 26px 46px rgba(224, 69, 143, .5));
+  animation: heartbeat .45s ease-in-out infinite alternate;
+}
+@keyframes heartbeat { from { transform: scale(.94); } to { transform: scale(1.06); } }
+.heart .q { transition: transform .22s cubic-bezier(.2, .9, .3, 1.4); }
+.heart .bars rect { transform-box: fill-box; transform-origin: center; animation: bar 1.1s ease-in-out infinite alternate; }
+.heart .bars rect:nth-child(2) { animation-delay: -.3s; }
+.heart .bars rect:nth-child(3) { animation-delay: -.6s; }
+.heart .bars rect:nth-child(4) { animation-delay: -.15s; }
+.heart .bars rect:nth-child(5) { animation-delay: -.45s; }
+.heart .bars rect:nth-child(6) { animation-delay: -.75s; }
+@keyframes bar { from { transform: scaleY(.55); } to { transform: scaleY(1); } }
+/* While the music plays the heart follows the beat instead of its idle loop. */
+.music-on .heart { animation: none; transition: transform .1s ease-out; }
+.music-on .heart .bars rect { animation: none; transition: transform .08s linear; }
+.music-on .beat-stage .ring:not(.live) { display: none; }
+.beat-stage.kick .heart { animation: kick .42s ease-out; }
+.beat-stage.kick .q1 { transform: translate(-2.2px, -2.2px); }
+.beat-stage.kick .q2 { transform: translate(2.2px, -2.2px); }
+.beat-stage.kick .q3 { transform: translate(-2.2px, 2.2px); }
+.beat-stage.kick .q4 { transform: translate(2.2px, 2.2px); }
+@keyframes kick { 0% { transform: scale(1.1); } 100% { transform: scale(.97); } }
+.music-on .tile-floor { animation-duration: 16s; }
+.sound-toggle .i-pause, .music-on .sound-toggle .i-play { display: none; }
+.music-on .sound-toggle .i-pause { display: block; }
+.btn.sound-toggle svg { width: 18px; height: 18px; }
+.music-on .btn.sound-toggle { background: var(--grad); border-color: transparent; color: #fff; }
+.sound-nav {
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--text); padding: 0;
+}
+.sound-nav svg { width: 18px; height: 18px; }
+.music-on .sound-nav { background: var(--grad); border-color: transparent; }
+.music-note { font-size: 13px !important; color: var(--soft) !important; margin-top: 18px !important; }
+.np-float {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30; display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 10px 14px; border-radius: 999px; background: rgba(28, 20, 38, .86);
+  border: 1px solid var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .45);
+  transform: translateY(140%); opacity: 0; transition: transform .4s ease, opacity .4s ease; pointer-events: none;
+}
+.np-float.show { transform: none; opacity: 1; pointer-events: auto; }
+.np-float b { display: block; font-size: 14px; }
+.np-float small { display: block; font-size: 12px; color: var(--muted); }
+.np-heart { width: 30px; height: 30px; border-radius: 9px; background: var(--grad); position: relative; }
+.np-heart::after { content: "♥"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 16px; animation: heartbeat .246s ease-in-out infinite alternate; }
+.np-float button { width: 36px; height: 36px; border-radius: 50%; border: 0; background: #fff; color: #120c1a; display: grid; place-items: center; cursor: pointer; padding: 0; }
+.np-float button svg { width: 16px; height: 16px; }
+@media (max-width: 900px) { .sound-nav { display: grid; } }
+@media (max-width: 560px) { .beat-stage { width: 210px; height: 210px; } .np-float { left: 16px; right: 16px; justify-content: space-between; } }
+@media (prefers-reduced-motion: reduce) {
+  .heart, .heart .bars rect, .beat-stage .ring:not(.live) { animation: none; }
+}
