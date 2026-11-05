@@ -1,4 +1,5 @@
-// Radio Tiles Theme: upbeat loop synthesized live with Web Audio — no audio files, no licensing.
+// Radio Tiles music: plays the track named in data-track on the script tag (House – July by Easy_Eva, Pixabay
+// Content License); without it, falls back to an upbeat loop synthesized live with Web Audio.
 // Nothing plays until the visitor presses play. The tile heart beats on every kick drum.
 (function () {
   "use strict";
@@ -13,6 +14,11 @@
   var LEAD = [74, 73, 71, 69, 71, 73, 74, 76, 78, 76, 74, 73, 71, 69, 66, 69];
 
   var ctx, master, analyser, delay, noise, timer, raf;
+  var me = document.currentScript || document.querySelector('script[src*="beat.js"]');
+  var TRACK = me && me.getAttribute("data-track");   // e.g. "assets/theme.mp3"
+  // Tempo of the track, measured offline: the heart beats on this grid, in sync with audio.currentTime.
+  var TRACK_BPM = me && +me.getAttribute("data-bpm") || 0, TRACK_OFFSET = me && +me.getAttribute("data-offset") || 0;
+  var audio = null, trackNode = null, beatClock = null, lastBeat = -1;
   var playing = false, step = 0, loop = 0, nextTime = 0;
   var stage = document.getElementById("beat-stage");
   var bars = stage ? stage.querySelectorAll(".bars rect") : [];
@@ -138,6 +144,19 @@
     }, wait);
   }
 
+  // With a real song there is no sequencer: a clock reads the song's position and pulses on every beat.
+  function startBeatClock() {
+    clearInterval(beatClock); lastBeat = -1;
+    if (!TRACK_BPM) return;
+    var period = 60 / TRACK_BPM;
+    beatClock = setInterval(function () {
+      if (!audio || audio.paused) return;
+      var t = audio.currentTime - TRACK_OFFSET;
+      var beat = t < 0 ? -1 : Math.floor(t / period);
+      if (beat !== lastBeat) { lastBeat = beat; if (beat >= 0) pulseAt(ctx.currentTime); }
+    }, 15);
+  }
+
   function drawBars() {
     analyser.getByteFrequencyData(freq);
     var bands = [2, 4, 7, 11, 16, 24];
@@ -157,28 +176,38 @@
       if (label) label.textContent = on ? "Pause" : "Play the vibe";
     });
     if (floatPill) floatPill.classList.toggle("show", on);
+    document.dispatchEvent(new CustomEvent("radiotiles:music", { detail: { playing: on } }));
   }
 
   function start() {
+    if (playing) return;
     if (!ctx) setup();
     ctx.resume();
     playing = true; step = 0; loop = 0; nextTime = ctx.currentTime + 0.08;
     master.gain.cancelScheduledValues(ctx.currentTime);
     master.gain.setValueAtTime(0.0001, ctx.currentTime);
-    master.gain.exponentialRampToValueAtTime(0.5, ctx.currentTime + 0.5);
-    timer = setInterval(tick, 25); tick();
+    master.gain.exponentialRampToValueAtTime(TRACK ? 0.7 : 0.5, ctx.currentTime + 0.5);
+    if (TRACK) {
+      if (!audio) {
+        audio = new Audio(TRACK); audio.loop = true; audio.crossOrigin = "anonymous"; audio.preload = "auto";
+        trackNode = ctx.createMediaElementSource(audio); trackNode.connect(master);
+      }
+      audio.play().then(startBeatClock).catch(function () { stop(); });
+    } else {
+      timer = setInterval(tick, 25); tick();
+    }
     drawBars();
     setUI(true);
   }
 
   function stop() {
     playing = false;
-    clearInterval(timer); cancelAnimationFrame(raf);
+    clearInterval(timer); clearInterval(beatClock); cancelAnimationFrame(raf);
     var now = ctx.currentTime;
     master.gain.cancelScheduledValues(now);
     master.gain.setValueAtTime(Math.max(master.gain.value, 0.0001), now);
     master.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
-    setTimeout(function () { if (!playing) ctx.suspend(); }, 450);
+    setTimeout(function () { if (!playing) { if (audio) audio.pause(); ctx.suspend(); } }, 450);
     Array.prototype.forEach.call(bars, function (r) { r.style.transform = ""; });
     if (stage) stage.classList.remove("kick");
     setUI(false);
@@ -197,6 +226,8 @@
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playing ? stop() : start(); }
     });
   }
+  window.RadioTilesMusic = { start: start, stop: stop, isPlaying: function () { return playing; } };
+
   // Pause when the tab goes to the background.
   document.addEventListener("visibilitychange", function () { if (document.hidden && playing) stop(); });
 })();

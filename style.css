@@ -522,3 +522,28 @@ article a { color: #ff9cc8; }
   .step { padding: 16px 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .step.on .step-bar::after { animation: none; transform: none; } }
+
+/* ---------- Try it: tap a station (tiles that obviously press) ---------- */
+.tryit { padding: 80px 0 20px; }
+.tryit .section-head { margin-bottom: 36px; }
+.try-grid { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 14px; }
+.tile.try {
+  position: relative; border: 0; cursor: pointer; font-size: clamp(14px, 1.45vw, 19px); padding: 10%;
+  transition: transform .18s ease, box-shadow .25s ease, filter .25s ease;
+}
+.tile.try:hover { transform: translateY(-4px) scale(1.03); filter: brightness(1.1); }
+.tile.try:active { transform: scale(.96); }
+.tile.try:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.tile.try.lit { box-shadow: 0 0 0 3px #fff, 0 18px 50px hsl(var(--h) 80% 55% / .6); transform: translateY(-4px) scale(1.04); }
+.try-live {
+  position: absolute; left: 10px; bottom: 9px; display: none; align-items: center; gap: 5px;
+  font: 800 10px/1 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; text-shadow: none;
+  background: rgba(0, 0, 0, .35); padding: 4px 7px 4px 6px; border-radius: 999px;
+}
+.try-live .eq { height: 10px; }
+.try-live .eq i { width: 2px; background: #fff; }
+.tile.try.lit .try-live { display: inline-flex; }
+@media (max-width: 1000px) { .try-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 520px; margin: 0 auto; } }
+@media (max-width: 560px) { .try-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } .tile.try { font-size: 15px; } }
+.music-on .tune-toast { bottom: 90px; }
+@media (max-width: 1000px) { .tile.try { font-size: clamp(16px, 3.4vw, 22px); } }
