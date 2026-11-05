@@ -629,7 +629,8 @@ article a { color: #ff9cc8; }
   position: absolute; left: 50%; bottom: calc(100% + 12px); transform: translateX(-50%);
   display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 6px 13px 6px 6px; border-radius: 999px;
   background: rgba(18, 12, 26, .72); border: 1px solid rgba(255, 255, 255, .18); color: #fff; font-size: 13px; font-weight: 700;
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 10px 24px rgba(0, 0, 0, .4); pointer-events: none;
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 10px 24px rgba(0, 0, 0, .4);
+  cursor: pointer;   /* the chip is part of the button: tapping "Tap to listen" plays too */
 }
 .hv-chip i { width: 20px; height: 20px; border-radius: 50%; background: #fff; display: grid; place-items: center; }
 .hv-chip i::after { content: ""; margin-left: 2px; border-left: 7px solid #120c1a; border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; }
