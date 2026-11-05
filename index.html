@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <header class="nav">
@@ -23,6 +23,7 @@
         <a href="#features">Features</a>
         <a href="#carplay">CarPlay</a>
         <a href="#watch">Apple Watch</a>
+        <a href="#how">How it works</a>
         <a href="#pro">Pro</a>
         <a href="support/">Support</a>
         <button class="sound-nav sound-toggle" type="button" aria-pressed="false" aria-label="Play music">
@@ -57,18 +58,57 @@
           </div>
         </div>
         <div class="device-stage">
-          <div class="phone"><img src="assets/home.jpg" alt="Radio Tiles home screen: a greeting, the local weather and a grid of colorful station tiles" width="660" height="1434"></div>
+          <div class="phone"><video class="screen-video" src="assets/demo.mp4" poster="assets/demo-poster.jpg" width="600" height="1304" autoplay muted loop playsinline aria-label="Radio Tiles in use: tap a station tile, open the player and set a sleep timer"></video></div>
           <div class="watch"><img src="assets/watch-player.jpg" alt="Radio Tiles on Apple Watch playing Jazz Lounge" width="416" height="496"></div>
         </div>
       </div>
     </section>
 
-    <div class="ribbon" aria-hidden="true">
-      <div class="ribbon-track">
-        <span>Jazz</span><span>Lo-fi</span><span>Classic rock</span><span>Country</span><span>News</span><span>Talk</span><span>Dance</span><span>Soul</span><span>Classical</span><span>Pop</span><span>Ambient</span><span>Sports</span>
-        <span>Jazz</span><span>Lo-fi</span><span>Classic rock</span><span>Country</span><span>News</span><span>Talk</span><span>Dance</span><span>Soul</span><span>Classical</span><span>Pop</span><span>Ambient</span><span>Sports</span>
+    <div class="ribbon onair">
+      <span class="onair-label"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>On air now</span>
+      <div class="ribbon-mask" aria-label="Songs on the demo stations right now (example)">
+        <div class="ribbon-track"><span class="air"><i class="tile" style="--h:3"></i><b>Rainy Window</b><small>Paper Lanterns · Lo-Fi Study</small></span><span class="air"><i class="tile" style="--h:194"></i><b>Midnight Avenue</b><small>The Blue Hours · Jazz Lounge</small></span><span class="air"><i class="tile" style="--h:134"></i><b>Gravel and Gold</b><small>Willow Creek · Country Roads</small></span><span class="air"><i class="tile" style="--h:224"></i><b>Get Up Tonight</b><small>Velvet Funk Society · Groove Lab</small></span><span class="air"><i class="tile" style="--h:257"></i><b>Highway Lights</b><small>The Northbound · Arena Rock</small></span><span class="air"><i class="tile" style="--h:335"></i><b>Feel It Now</b><small>Neon Hearts · Dance Nation</small></span><span class="air"><i class="tile" style="--h:170"></i><b>Summer Signal</b><small>Lila Mae · Pop Hits</small></span><span class="air"><i class="tile" style="--h:304"></i><b>Coffee and Sunrise</b><small>Trio Alba · Morning Jazz</small></span><span class="air"><i class="tile" style="--h:37"></i><b>Saturday Dance</b><small>The Rivieras · Vintage Vinyl</small></span><span aria-hidden="true" class="dup"><span class="air"><i class="tile" style="--h:3"></i><b>Rainy Window</b><small>Paper Lanterns · Lo-Fi Study</small></span><span class="air"><i class="tile" style="--h:194"></i><b>Midnight Avenue</b><small>The Blue Hours · Jazz Lounge</small></span><span class="air"><i class="tile" style="--h:134"></i><b>Gravel and Gold</b><small>Willow Creek · Country Roads</small></span><span class="air"><i class="tile" style="--h:224"></i><b>Get Up Tonight</b><small>Velvet Funk Society · Groove Lab</small></span><span class="air"><i class="tile" style="--h:257"></i><b>Highway Lights</b><small>The Northbound · Arena Rock</small></span><span class="air"><i class="tile" style="--h:335"></i><b>Feel It Now</b><small>Neon Hearts · Dance Nation</small></span><span class="air"><i class="tile" style="--h:170"></i><b>Summer Signal</b><small>Lila Mae · Pop Hits</small></span><span class="air"><i class="tile" style="--h:304"></i><b>Coffee and Sunrise</b><small>Trio Alba · Morning Jazz</small></span><span class="air"><i class="tile" style="--h:37"></i><b>Saturday Dance</b><small>The Rivieras · Vintage Vinyl</small></span></span></div>
       </div>
     </div>
+
+    <section class="story" id="how">
+      <div class="wrap story-grid">
+        <div class="story-phone" aria-hidden="true">
+          <div class="phone">
+            <img class="shot on" src="assets/home.jpg" alt="" width="660" height="1434">
+            <img class="shot" src="assets/player-live.jpg" alt="" width="660" height="1434" loading="lazy">
+            <img class="shot" src="assets/player.jpg" alt="" width="660" height="1434" loading="lazy">
+            <img class="shot" src="assets/pro.jpg" alt="" width="660" height="1434" loading="lazy">
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step on" data-shot="0">
+            <span class="step-n">1</span>
+            <h2>Tap a tile.</h2>
+            <p>Every station you add becomes a big, colorful tile. One tap and it's playing.</p>
+            <img class="step-shot" src="assets/home.jpg" alt="The home screen with station tiles" width="660" height="1434" loading="lazy">
+          </li>
+          <li class="step" data-shot="1">
+            <span class="step-n">2</span>
+            <h2>You're live.</h2>
+            <p>A calm, full-screen player with the song and artist when the station sends them. Steering wheel and headphone buttons switch stations too.</p>
+            <img class="step-shot" src="assets/player-live.jpg" alt="The full-screen player" width="660" height="1434" loading="lazy">
+          </li>
+          <li class="step" data-shot="2">
+            <span class="step-n">3</span>
+            <h2>Drift off.</h2>
+            <p>Set the sleep timer for 15 minutes to 2 hours, or until the song ends. The radio fades out gently and turns itself off.</p>
+            <img class="step-shot" src="assets/player.jpg" alt="The player with a sleep timer counting down" width="660" height="1434" loading="lazy">
+          </li>
+          <li class="step" data-shot="3">
+            <span class="step-n">4</span>
+            <h2>Go Pro when you're ready.</h2>
+            <p>Free holds three stations. Pro unlocks unlimited stations, every artwork style and the sleep timer.</p>
+            <img class="step-shot" src="assets/pro.jpg" alt="The Radio Tiles Pro screen with plans" width="660" height="1434" loading="lazy">
+          </li>
+        </ol>
+      </div>
+    </section>
 
     <section id="features">
       <div class="wrap">
@@ -157,17 +197,6 @@
           <div class="feature-visual">
             <div class="watch"><img src="assets/watch-stations.jpg" alt="Station tiles on Apple Watch" width="416" height="496" loading="lazy"></div>
             <div class="watch"><img src="assets/watch-player.jpg" alt="Now playing on Apple Watch" width="416" height="496" loading="lazy"></div>
-          </div>
-        </div>
-
-        <div class="feature flip reveal">
-          <div class="feature-copy">
-            <span class="tag pro">Pro</span>
-            <h2>Fall asleep to the radio.</h2>
-            <p>Set a sleep timer for 15 minutes to 2 hours, or until the song ends. The radio fades out gently and turns itself off.</p>
-          </div>
-          <div class="feature-visual">
-            <div class="phone"><img src="assets/player.jpg" alt="The Radio Tiles player with a sleep timer counting down" width="660" height="1434" loading="lazy"></div>
           </div>
         </div>
 
@@ -341,6 +370,8 @@
     </section>
   </main>
 
+  <div class="tune-toast" id="tune-toast" role="status" aria-live="polite"></div>
+
   <div class="np-float" id="np-float" aria-live="polite">
     <span class="np-heart" aria-hidden="true"></span>
     <span><b>Radio Tiles Theme</b><small>Made live in your browser</small></span>
@@ -379,6 +410,48 @@
       }
       setDrift();
       window.addEventListener("resize", setDrift);
+
+      // Idea 1: tap a floor tile to "tune in": it lights up and a now-playing card shows an example song.
+      var songs = {"Lo-Fi Study": ["Rainy Window", "Paper Lanterns"], "Jazz Lounge": ["Midnight Avenue", "The Blue Hours"],
+        "Morning Jazz": ["Coffee and Sunrise", "Trio Alba"], "Country Roads": ["Gravel and Gold", "Willow Creek"],
+        "Groove Lab": ["Get Up Tonight", "Velvet Funk Society"], "Arena Rock": ["Highway Lights", "The Northbound"],
+        "Dance Nation": ["Feel It Now", "Neon Hearts"], "Pop Hits": ["Summer Signal", "Lila Mae"],
+        "Vintage Vinyl": ["Saturday Dance", "The Rivieras"], "Night Drive": ["Exit 42", "Chrome Cassette"],
+        "Synthwave": ["Neon Coast", "Laser Palms"], "Soul Kitchen": ["Sweet Talk", "Marvin Lane"],
+        "Ocean Waves": ["Low Tide", "Salt and Sand"], "Deep Focus": ["Quiet Hours", "Northern Study"],
+        "Sunday Jazz": ["Late Brunch", "The Corner Trio"], "Club Mix": ["Hands Up", "Disco Planet"],
+        "Coffee House": ["Second Cup", "June Avenue"], "Blues Night": ["Last Train Home", "Big River Band"]};
+      var toast = document.getElementById("tune-toast"), toastTimer;
+      floor.addEventListener("click", function (e) {
+        var tile = e.target.closest(".tile");
+        if (!tile) return;
+        floor.querySelectorAll(".tile.lit").forEach(function (t) { t.classList.remove("lit"); });
+        tile.classList.add("lit");
+        var name = tile.textContent, song = songs[name] || ["Live", ""];
+        toast.innerHTML = '<i class="tile" style="--h:' + tile.style.getPropertyValue("--h") + '"></i><span><b>' + song[0] +
+          '</b><small>' + song[1] + " · " + name + '</small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>';
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove("show"); tile.classList.remove("lit"); }, 6000);
+      });
+
+      // Idea 2: the phone in "How it works" follows the step you're reading.
+      var shots = document.querySelectorAll(".story-phone .shot"), steps = document.querySelectorAll(".step");
+      if ("IntersectionObserver" in window && shots.length) {
+        var so = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var i = +e.target.dataset.shot;
+            steps.forEach(function (s) { s.classList.toggle("on", s === e.target); });
+            shots.forEach(function (img, k) { img.classList.toggle("on", k === i); });
+          });
+        }, { rootMargin: "-45% 0px -45% 0px" });
+        steps.forEach(function (s) { so.observe(s); });
+      }
+
+      // Idea 6: the hero video stays still for people who prefer less motion.
+      var video = document.querySelector(".screen-video");
+      if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { video.removeAttribute("autoplay"); video.pause(); }
 
       var nav = document.querySelector(".nav");
       window.addEventListener("scroll", function () { nav.classList.toggle("scrolled", window.scrollY > 8); }, { passive: true });
