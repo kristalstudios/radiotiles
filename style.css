@@ -90,6 +90,9 @@ a { color: inherit; }
   font-weight: 700; font-size: 16px; text-decoration: none; border: 0; cursor: default;
 }
 .btn-primary { background: #fff; color: #120c1a; }
+a.btn { cursor: pointer; }
+a.btn-primary:hover { background: #efeaf6; }
+a.pill:hover { background: var(--surface); }
 .btn-primary svg { width: 20px; height: 20px; }
 .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--line); cursor: pointer; }
 .btn-ghost:hover { background: var(--surface-2); }
