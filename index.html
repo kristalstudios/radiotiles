@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
   <header class="nav">
@@ -227,6 +227,33 @@
             <div class="cp-switch" role="group" aria-label="CarPlay screens">
               <button type="button" class="on" data-cp="0" aria-pressed="true">Stations</button>
               <button type="button" data-cp="1" aria-pressed="false">Now Playing</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature feature-wide reveal" id="duo">
+          <div class="feature-copy">
+            <span class="tag">iPhone Duo</span>
+            <h2>Beautiful on iPhone Duo.</h2>
+            <p>Radio Tiles is optimized for iPhone Duo. Unfold it and your stations spread across the whole screen. Fold it, and everything fits just right on the outside.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Six tiles in a row when it's open, all your stations at a glance</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Top of the Week lives in the side column, right under the clock</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>A two-column player: big artwork on one side, controls on the other</li>
+            </ul>
+          </div>
+          <div class="feature-visual">
+            <!-- Real screenshots from the iPhone Duo simulator (demo stations): unfolded inner screen and folded outer screen. -->
+            <div class="duo-stage">
+              <div class="duo-open">
+                <img class="duo-shot on" src="assets/duo-home.jpg" alt="Radio Tiles on an unfolded iPhone Duo: six station tiles in a row and Top of the Week in the side column" width="1800" height="1266" loading="lazy">
+                <img class="duo-shot" src="assets/duo-player.jpg" alt="The two-column player on an unfolded iPhone Duo: Jazz Lounge artwork on the left, controls on the right" width="1800" height="1266" loading="lazy">
+              </div>
+              <div class="duo-folded"><img src="assets/duo-folded.jpg" alt="Radio Tiles on the outer screen of a folded iPhone Duo" width="700" height="1018" loading="lazy"></div>
+            </div>
+            <div class="duo-switch" role="group" aria-label="iPhone Duo screens">
+              <button type="button" class="on" aria-pressed="true">Home</button>
+              <button type="button" aria-pressed="false">Player</button>
             </div>
           </div>
         </div>
@@ -700,6 +727,17 @@
       }
       cpButtons.forEach(function (b, k) { b.addEventListener("click", function () { showCarPlay(k, false); }); });
       if (cpShots.length) showCarPlay(0, true);
+
+      // iPhone Duo: Home and Player switch the same way.
+      var duoShots = document.querySelectorAll(".duo-shot"), duoButtons = document.querySelectorAll(".duo-switch button"), duoTimer;
+      function showDuo(i, auto) {
+        duoButtons.forEach(function (b, k) { b.classList.toggle("on", k === i); b.setAttribute("aria-pressed", k === i ? "true" : "false"); });
+        duoShots.forEach(function (img, k) { img.classList.toggle("on", k === i); });
+        clearTimeout(duoTimer);
+        if (auto && !still) duoTimer = setTimeout(function () { showDuo((i + 1) % duoShots.length, true); }, 5000);
+      }
+      duoButtons.forEach(function (b, k) { b.addEventListener("click", function () { showDuo(k, false); }); });
+      if (duoShots.length) showDuo(0, true);
 
       // Idea 6: the hero video stays still for people who prefer less motion.
       var video = document.querySelector(".screen-video");
